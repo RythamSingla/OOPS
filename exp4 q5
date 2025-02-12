@@ -1,0 +1,75 @@
+public class Employee {
+    private int employeeID;
+    private String name;
+    private String department;
+    private double salary;
+    
+    private static int totalEmployees = 0;
+
+    // Default constructor
+    public Employee() {
+        this.employeeID = 0;
+        this.name = "Unknown";
+        this.department = "None";
+        this.salary = 0.0;
+        totalEmployees++;
+    }
+
+    // Parameterized constructor
+    public Employee(int employeeID, String name, String department, double salary) {
+        this.employeeID = employeeID;
+        this.name = name;
+        this.department = department;
+        this.salary = salary;
+        totalEmployees++;
+    }
+
+    // Method to calculate salary
+    public double calculateSalary() {
+        return this.salary;
+    }
+
+    // Method to display employee information
+    public void displayEmployeeInfo() {
+        System.out.println("Employee ID: " + employeeID);
+        System.out.println("Name: " + name);
+        System.out.println("Department: " + department);
+        System.out.println("Salary: " + salary);
+        System.out.println();
+    }
+
+    // Public getter for salary
+    public double getSalary() {
+        return salary;
+    }
+
+    // Static method to display total number of employees
+    public static void displayTotalEmployees() {
+        System.out.println("Total Number of Employees: " + totalEmployees);
+    }
+
+    public static void main(String[] args) {
+        // Creating employee objects using default constructor
+        Employee emp1 = new Employee();
+        Employee emp2 = new Employee();
+
+        // Creating employee objects using parameterized constructor
+        Employee emp3 = new Employee(101, "Alice", "HR", 50000);
+        Employee emp4 = new Employee(102, "Bob", "Finance", 60000);
+
+        // Displaying employee information
+        emp1.displayEmployeeInfo();
+        emp2.displayEmployeeInfo();
+        emp3.displayEmployeeInfo();
+        emp4.displayEmployeeInfo();
+
+        // Displaying total number of employees
+        Employee.displayTotalEmployees();
+
+        // Displaying salary details
+        System.out.println("Salary of Employee 1: " + emp1.getSalary());
+        System.out.println("Salary of Employee 2: " + emp2.getSalary());
+        System.out.println("Salary of Employee 3: " + emp3.getSalary());
+        System.out.println("Salary of Employee 4: " + emp4.getSalary());
+    }
+}
