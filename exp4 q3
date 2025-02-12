@@ -1,0 +1,37 @@
+class University {
+    // Static variable shared among all instances
+    static String universityName = "Global University";
+    
+    // Non-static variable unique to each instance
+    private String studentName;
+
+    // Constructor to initialize student name
+    public University(String studentName) {
+        this.studentName = studentName;
+    }
+
+    // Static method to display university name
+    public static void displayUniversityName() {
+        System.out.println("University Name: " + universityName);
+    }
+
+    // Method to display student details
+    public void displayStudentDetails() {
+        System.out.println("Student Name: " + studentName);
+    }
+
+    public static void main(String[] args) {
+        // Displaying university name using static method
+        University.displayUniversityName();
+
+        // Creating multiple student objects
+        University student1 = new University("Alice");
+        University student2 = new University("Bob");
+        University student3 = new University("Charlie");
+
+        // Displaying student details
+        student1.displayStudentDetails();
+        student2.displayStudentDetails();
+        student3.displayStudentDetails();
+    }
+}
