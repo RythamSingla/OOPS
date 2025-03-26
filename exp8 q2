@@ -1,0 +1,40 @@
+class PlayerDefeatedException extends Exception {
+    public PlayerDefeatedException(String message) {
+        super(message);
+    }
+}
+
+class Player {
+    private String name;
+    private int health;
+
+    public Player(String name, int health) {
+        this.name = name;
+        this.health = health;
+    }
+
+    public void takeDamage(int damage) throws PlayerDefeatedException {
+        health -= damage;
+        if (health < 0) {
+            throw new PlayerDefeatedException(name + " has been defeated!");
+        }
+        System.out.println(name + " takes " + damage + " damage. Remaining health: " + health);
+    }
+
+    public int getHealth() {
+        return health;
+    }
+}
+
+public class RPGGame {
+    public static void main(String[] args) {
+        Player player = new Player("Hero", 50);
+        
+        try {
+            player.takeDamage(30);
+            player.takeDamage(25); // This attack will cause the exception
+        } catch (PlayerDefeatedException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
