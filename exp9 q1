@@ -1,0 +1,24 @@
+import java.io.*;
+
+public class Main {
+    public static void readFile(String fileName) throws FileNotFoundException {
+        FileReader fr = new FileReader(fileName);  // might throw exception
+        System.out.println("File opened successfully.");
+    }
+
+    public static void main(String[] args) {
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            System.out.print("Enter file name: ");
+            String name = br.readLine();
+
+            readFile(name);
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found.");
+        } catch (IOException e) {
+            System.out.println("Input error.");
+        } finally {
+            System.out.println("File operation attempted.");
+        }
+    }
+}
