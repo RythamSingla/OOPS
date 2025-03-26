@@ -1,0 +1,28 @@
+class DivisionByZeroException extends ArithmeticException {
+    public DivisionByZeroException(String message) {
+        super(message);
+    }
+}
+
+public class SimpleCalculator {
+    public static int divide(int a, int b) {
+        if (b == 0) {
+            throw new DivisionByZeroException("Error: Division by zero is not allowed.");
+        }
+        return a / b;
+    }
+
+    public static void main(String[] args) {
+        int[] numerators = {10, 20, 30};
+        int[] denominators = {2, 0, 5};
+        
+        for (int i = 0; i < numerators.length; i++) {
+            try {
+                int result = divide(numerators[i], denominators[i]);
+                System.out.println(numerators[i] + " / " + denominators[i] + " = " + result);
+            } catch (DivisionByZeroException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+}
