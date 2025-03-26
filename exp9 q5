@@ -1,0 +1,39 @@
+import java.io.*;
+
+class Person implements Serializable {
+    String name;
+    int age;
+
+    Person(String n, int a) {
+        name = n;
+        age = a;
+    }
+}
+
+public class PersonData {
+    public static void main(String[] args) {
+        // Serialize
+        Person p = new Person("Ravi", 20);
+
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("person.txt"));
+            out.writeObject(p);
+            out.close();
+            System.out.println("Object saved.");
+        } catch (IOException e) {
+            System.out.println("Error during save.");
+        }
+
+        // Deserialize
+        try {
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream("person.txt"));
+            Person p2 = (Person) in.readObject();
+            in.close();
+
+            System.out.println("Name: " + p2.name);
+            System.out.println("Age: " + p2.age);
+        } catch (Exception e) {
+            System.out.println("Error during load.");
+        }
+    }
+}
