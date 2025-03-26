@@ -1,0 +1,29 @@
+import java.io.*;
+import java.util.Scanner;
+
+public class WordCharCount {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter file name: ");
+        String name = sc.nextLine();
+
+        try {
+            File f = new File(name);
+            Scanner fileScanner = new Scanner(f);
+
+            int words = 0;
+            int chars = 0;
+
+            while (fileScanner.hasNext()) {
+                String word = fileScanner.next();
+                words++;
+                chars += word.length(); // no space counted
+            }
+
+            System.out.println("Words: " + words);
+            System.out.println("Characters (no spaces): " + chars);
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found.");
+        }
+    }
+}
